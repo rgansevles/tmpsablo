@@ -1,0 +1,24 @@
+<html ng-app="sabloApp" ng-controller="SabloController">
+	<head>
+		<title ng-bind="windowTitle"></title>
+		
+		<script src="lib/ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
+		<script src="lib/ajax.googleapis.com/ajax/libs/angularjs/1.2.11/angular.js"></script>
+		
+		<!-- sabo libraries -->
+		<script src="sablo/js/websocket.js"></script>
+
+		<!-- application -->
+		<script src="sablo/js/sablo_app.js"></script>
+
+		<link rel="stylesheet" href='css/sample.css'/>
+	</head>
+	<script type="text/javascript">
+		angular.module('sabloApp').run(function(){
+		  alert('angular ok')
+		});
+	</script>
+  <body>
+  	<div ng-include="currentPanel"><div>
+  </body>
+</html>

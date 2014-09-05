@@ -17,11 +17,12 @@
 
 package org.sablo.example.endpoint;
 
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+
 import org.json.JSONObject;
-import org.sablo.specification.WebComponentSpecification;
+import org.sablo.Container;
 import org.sablo.websocket.BaseWebsocketSession;
-import org.sablo.websocket.IClientService;
-import org.sablo.websocket.impl.ClientService;
 
 /**
  *
@@ -33,15 +34,41 @@ public class HelloWorldWebsocketSession extends BaseWebsocketSession
 //	private static final WebComponentSpecification EDITOR_SERVICE_SPECIFICATION = new WebComponentSpecification(EDITOR_SERVICE, "", EDITOR_SERVICE, null, null,
 //		"", null);
 
+	protected final ConcurrentMap<String, Container> createdForms = new ConcurrentHashMap<>();
+
 	public HelloWorldWebsocketSession(String uuid)
 	{
 		super(uuid);
 	}
 
-	public boolean isValid() {
+	public boolean isValid()
+	{
 		return true;
 	}
 
-	public void handleMessage(JSONObject obj) {
+	public void handleMessage(JSONObject obj)
+	{
+	}
+
+	@Override
+	public Container getForm(String formName)
+	{
+		Container form = createdForms.get(formName);
+		if (form == null)
+		{
+			createdForms.put(formName, form = createForm(formName));
+		}
+		return form;
+	}
+
+	public Container createForm(String formName)
+	{
+		switch (formName)
+		{
+			case "mainForm" :
+
+				return new MainForm(formName, null);
+		}
+		throw new IllegalArgumentException("unkown form: " + formName);
 	}
 }

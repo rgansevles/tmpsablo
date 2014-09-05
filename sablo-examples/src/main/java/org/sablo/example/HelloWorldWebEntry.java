@@ -3,7 +3,6 @@ package org.sablo.example;
 import java.io.IOException;
 
 import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig; 
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -17,7 +16,8 @@ import org.sablo.websocket.IWebsocketSessionFactory;
 @WebFilter(urlPatterns = { "/sablo-examples/helloworld/*" })
 public class HelloWorldWebEntry extends WebEntry
 {
-	public HelloWorldWebEntry( ) {
+	public HelloWorldWebEntry()
+	{
 		super("helloworld");
 	}
 
@@ -111,7 +111,7 @@ public class HelloWorldWebEntry extends WebEntry
 //				}
 //			}
 //
-			super.doFilter(servletRequest, servletResponse,filterChain);
+		super.doFilter(servletRequest, servletResponse, filterChain);
 //		}
 //		catch (RuntimeException | Error e)
 //		{
@@ -120,9 +120,9 @@ public class HelloWorldWebEntry extends WebEntry
 	}
 
 	@Override
-	public String[] getWebComponentBundleNames() 
+	public String[] getWebComponentBundleNames()
 	{
-		return new String[] {"components/mycomp"};
+		return new String[] { "components/mycomp" };
 	}
 
 //	@Override
@@ -132,17 +132,17 @@ public class HelloWorldWebEntry extends WebEntry
 //	}
 
 	@Override
-	protected IWebsocketSessionFactory createSessionFactory() {
-		
-		return new IWebsocketSessionFactory(){
-
-			public IWebsocketSession createSession(
-					String uuid) throws Exception {
+	protected IWebsocketSessionFactory createSessionFactory()
+	{
+		return new IWebsocketSessionFactory()
+		{
+			public IWebsocketSession createSession(String uuid) throws Exception
+			{
 				return new HelloWorldWebsocketSession(uuid);
-			}};
+			}
+		};
 	}
 
-	
 //    @Override
 //    public Class<WebApplication>[] getWebApplications() 
 //    {

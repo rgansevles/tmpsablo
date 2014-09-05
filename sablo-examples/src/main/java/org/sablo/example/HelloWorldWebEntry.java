@@ -10,6 +10,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
 import org.sablo.WebEntry;
+import org.sablo.example.endpoint.HelloWorldWebsocketSession;
 import org.sablo.websocket.IWebsocketSession;
 import org.sablo.websocket.IWebsocketSessionFactory;
 
@@ -137,8 +138,7 @@ public class HelloWorldWebEntry extends WebEntry
 
 			public IWebsocketSession createSession(
 					String uuid) throws Exception {
-				// TODO Auto-generated method stub
-				return null;
+				return new HelloWorldWebsocketSession(uuid);
 			}};
 	}
 

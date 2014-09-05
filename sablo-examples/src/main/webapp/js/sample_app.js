@@ -1,8 +1,8 @@
-angular.module('sampleApp', ['webSocketModule']).config(function() {
-}).controller("MainController", function($scope, $rootScope) {
-	$scope.winowTitle = 'Sample Aplication';
-	$scope.currentPanel = 'HelloWorld.html';
+angular.module('sampleApp', []).config(function() {
+}).controller("SampleController", function($scope, $rootScope) {
+	$scope.windowTitle = 'Sample Aplication';
+	$scope.currentPanel = 'forms/mainForm.html';
 }).controller( ).controller( )
 .run(function($window) {
-	$window.alert('Startup')
-})
+	$window.alert('Sample Startup');
+});

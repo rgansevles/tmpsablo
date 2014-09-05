@@ -1,15 +1,23 @@
-<html ng-app="sabloApp" ng-controller="SabloController">
+<html ng-app="sampleApp" ng-controller="SampleController">
 	<head>
 		<title ng-bind="windowTitle"></title>
 		
+		<!-- 3rd-party libraries -->
 		<script src="lib/ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
 		<script src="lib/ajax.googleapis.com/ajax/libs/angularjs/1.2.11/angular.js"></script>
 		
-		<!-- sabo libraries -->
+		<!-- sablo libraries -->
 		<script src="sablo/js/websocket.js"></script>
-
-		<!-- application -->
 		<script src="sablo/js/sablo_app.js"></script>
+
+		<!-- components -->
+		<script src="components/mycomp/mylabel/mylabel.js"></script>
+		
+		<!-- application -->
+		<script src="js/sample_app.js"></script>
+		
+		<!-- application forms -->
+		<script src="forms/mainForm.js"></script>
 
 		<link rel="stylesheet" href='css/sample.css'/>
 	</head>
@@ -19,6 +27,6 @@
 		});
 	</script>
   <body>
-  	<div ng-include="currentPanel"><div>
+  	<div ng-include="currentPanel"></div>
   </body>
 </html>

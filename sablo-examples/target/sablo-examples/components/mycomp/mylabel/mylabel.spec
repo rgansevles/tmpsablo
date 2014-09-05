@@ -1,6 +1,6 @@
 name: 'mylabel',
 displayName: 'My Label',
-definition: 'mycomp/mylabel/mylabel.js',
+definition: 'components/mycomp/mylabel/mylabel.js',
 model:
 {
     dataprovider: 'dataprovider',

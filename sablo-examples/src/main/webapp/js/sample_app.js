@@ -1,4 +1,4 @@
-angular.module('sampleApp', []).config(function() {
+angular.module('sampleApp', ['mylabel']).config(function() {
 }).controller("SampleController", function($scope, $rootScope) {
 	$scope.windowTitle = 'Sample Aplication';
 	$scope.currentPanel = 'forms/mainForm.html';

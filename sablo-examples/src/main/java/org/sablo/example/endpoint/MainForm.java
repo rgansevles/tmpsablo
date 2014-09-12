@@ -37,7 +37,8 @@ public class MainForm extends Container
 		super(name, spec);
 
 		WebComponent theLabel = new WebComponent("mylabel", "thelabel");
-		theLabel.setProperty("dataprovider", "Hi from the server");
+		theLabel.setProperty("somestring", "Hi from the server");
+		theLabel.setProperty("somenumber", new Integer(99));
 		add(theLabel);
 	}
 

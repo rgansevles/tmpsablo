@@ -16,7 +16,7 @@ angular.module('mylabel',[]).directive('mylabel', function() {
 //				alert(msg);
 //			};
 		  },
-      templateUrl: 'components/mycomp/mylabel/mylabel.html',
+      templateUrl: 'mycomp/mylabel/mylabel.html',
       replace: true
     };
   });

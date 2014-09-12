@@ -122,7 +122,7 @@ public class HelloWorldWebEntry extends WebEntry
 	@Override
 	public String[] getWebComponentBundleNames()
 	{
-		return new String[] { "components/mycomp" };
+		return new String[] { "/mycomp" };
 	}
 
 //	@Override

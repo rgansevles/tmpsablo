@@ -1,7 +1,7 @@
 angular.module('sampleApp').controller("mainForm", function($scope, $timeout, $window, $sabloApplication) {
 
 	$scope.model = {
-			thelabel: 	 { dataprovider : 'Hi', dataprovider1 : 'there' }
+			thelabel: 	 { somestring : 'Hi', somenumber : 42 }
 	};
 	
 	$window.alert('RAGTEST mainForm');

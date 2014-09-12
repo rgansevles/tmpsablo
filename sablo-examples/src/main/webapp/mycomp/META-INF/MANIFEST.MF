@@ -1,4 +1,4 @@
 Manifest-Version: 1.0
 
-Name: components/mycomp/mylabel/mylabel.spec
+Name: mylabel/mylabel.spec
 Web-Component: True

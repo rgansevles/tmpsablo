@@ -22,6 +22,7 @@ import java.util.concurrent.ConcurrentMap;
 
 import org.json.JSONObject;
 import org.sablo.Container;
+import org.sablo.specification.WebComponentSpecification;
 import org.sablo.websocket.BaseWebsocketSession;
 
 /**
@@ -33,6 +34,17 @@ public class HelloWorldWebsocketSession extends BaseWebsocketSession
 {
 //	private static final WebComponentSpecification EDITOR_SERVICE_SPECIFICATION = new WebComponentSpecification(EDITOR_SERVICE, "", EDITOR_SERVICE, null, null,
 //		"", null);
+
+	private static final class FormSpecification extends WebComponentSpecification
+	{
+		private FormSpecification()
+		{
+			super("form_spec", "", "", null, null, "", null);
+			//putProperty("size", new PropertyDescription("size", TypesRegistry.getType("dimension")));
+		}
+	}
+
+	private static final WebComponentSpecification FORM_SPEC = new FormSpecification();
 
 	protected final ConcurrentMap<String, Container> createdForms = new ConcurrentHashMap<>();
 
@@ -67,7 +79,7 @@ public class HelloWorldWebsocketSession extends BaseWebsocketSession
 		{
 			case "mainForm" :
 
-				return new MainForm(formName, null);
+				return new MainForm(formName, FORM_SPEC);
 		}
 		throw new IllegalArgumentException("unkown form: " + formName);
 	}

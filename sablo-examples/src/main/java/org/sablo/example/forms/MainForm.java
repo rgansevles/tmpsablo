@@ -15,7 +15,7 @@
  Software Foundation,Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301
  */
 
-package org.sablo.example.endpoint;
+package org.sablo.example.forms;
 
 import org.sablo.Container;
 import org.sablo.WebComponent;
@@ -37,9 +37,16 @@ public class MainForm extends Container
 		super(name, spec);
 
 		WebComponent theLabel = new WebComponent("mylabel", "thelabel");
-		theLabel.setProperty("somestring", "Hi from the server");
-		theLabel.setProperty("somenumber", new Integer(99));
+		theLabel.setProperty("text", "initial server value");
 		add(theLabel);
+
+		WebComponent theButton = new WebComponent("mybutton", "thebutton");
+		// TODO: add onclick handler
+		add(theButton);
+
+		WebComponent theTextField = new WebComponent("mytextfield", "thetextfield");
+		theTextField.setProperty("value", "changeme");
+		add(theTextField);
 	}
 
 }

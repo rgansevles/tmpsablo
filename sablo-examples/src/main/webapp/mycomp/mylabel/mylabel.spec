@@ -4,8 +4,7 @@
 	"definition": "mycomp/mylabel/mylabel.js",
 	"model":
 	{
-		 "somestring" : "string", 
-		 "somenumber" : "int"
+		 "text" : "string"
 	},
 	"__handlers":
 	{

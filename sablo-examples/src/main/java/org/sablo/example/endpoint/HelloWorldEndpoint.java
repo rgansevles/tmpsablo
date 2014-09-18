@@ -18,8 +18,6 @@
 package org.sablo.example.endpoint;
 
 
-import java.io.IOException;
-
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
 import javax.websocket.OnMessage;
@@ -48,9 +46,9 @@ public class HelloWorldEndpoint extends WebsocketEndpoint
 
 	@OnOpen
 	public void start(Session newSession, @PathParam("sessionid")
-	String sessionid ) throws Exception
+	String sessionid) throws Exception
 	{
-		 start(newSession, sessionid, null, null);
+		start(newSession, sessionid, null, null);
 	}
 
 	@Override
@@ -70,13 +68,6 @@ public class HelloWorldEndpoint extends WebsocketEndpoint
 	@OnError
 	public void onError(Throwable t)
 	{
-		if (t instanceof IOException)
-		{
-			log.error("IOException happend", t.getMessage()); // TODO if it has no message but has a 'cause' it will not print anything useful
-		}
-		else
-		{
-			log.error("Exception happend", t);
-		}
+		log.error("Exception happend", t);
 	}
 }

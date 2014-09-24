@@ -18,6 +18,7 @@
 package org.sablo.example.forms;
 
 import org.sablo.Container;
+import org.sablo.IEventHandler;
 import org.sablo.WebComponent;
 import org.sablo.specification.WebComponentSpecification;
 
@@ -41,7 +42,16 @@ public class MainForm extends Container
 		add(theLabel);
 
 		WebComponent theButton = new WebComponent("mybutton", "thebutton");
-		// TODO: add onclick handler
+		theButton.addHandler("pushed", new IEventHandler()
+		{
+
+			@Override
+			public Object executeEvent(Object[] args)
+			{
+				System.err.println("I was pushed!");
+				return 42;
+			}
+		});
 		add(theButton);
 
 		WebComponent theTextField = new WebComponent("mytextfield", "thetextfield");

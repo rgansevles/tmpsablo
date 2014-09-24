@@ -1,13 +1,12 @@
 angular.module('mybutton',[]).directive('mybutton', ['$window',function($window) {  
-	function onClick(event) {
-		$window.alert('Klik!');
-	}
 	
 	return {
       restrict: 'E',
       transclude: true,
       scope: {
-			model: "=buttonModel"
+			name: "=name",
+			model: "=buttonModel",
+			handlers: "=sabloHandlers"
 //			api: "=svyApi",
 //	       	handlers: "=buttonHandlers",
 		},
@@ -19,7 +18,10 @@ angular.module('mybutton',[]).directive('mybutton', ['$window',function($window)
 //			$scope.api.doAlert = function(msg) {
 //				alert(msg);
 //			};
-			$scope.onClick = onClick;
+			$scope.onClick = function onClick(event) {
+				$window.alert('Klik!');
+				$scope.handlers.callEvent('pushed');
+			};
 		  },
       templateUrl: 'mycomp/mybutton/mybutton.html',
       replace: true

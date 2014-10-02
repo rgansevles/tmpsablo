@@ -18,6 +18,7 @@
 package org.sablo.example.endpoint;
 
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
@@ -76,11 +77,18 @@ public class HelloWorldWebsocketSession extends BaseWebsocketSession
 			String event = obj.getString("cmd");
 			switch (event)
 			{
-//				case "datapush" :
-//				{
-//					pushChanges(obj, false);
-//					break;
-//				}
+				case "datapush" :
+				{
+					getEventDispatcher().addEvent(new Runnable()
+					{
+						@Override
+						public void run()
+						{
+							pushChanges(obj);
+						}
+					});
+					break;
+				}
 //				case "svypush" :
 //				{
 //					pushChanges(obj, true);
@@ -105,7 +113,7 @@ public class HelloWorldWebsocketSession extends BaseWebsocketSession
 									args[i] = jsargs.get(i);
 								}
 
-								//	pushChanges(obj);
+								pushChanges(obj);
 								Object result = null;
 								String error = null;
 								try
@@ -145,6 +153,27 @@ public class HelloWorldWebsocketSession extends BaseWebsocketSession
 		finally
 		{
 			stopHandlingEvent();
+		}
+	}
+
+	private void pushChanges(JSONObject obj) throws JSONException
+	{
+		JSONObject changes = obj.getJSONObject("changes");
+		if (changes.length() > 0)
+		{
+			String formName = obj.getString("formname");
+			Container form = getForm(formName);
+
+			String beanName = obj.optString("beanname");
+
+			WebComponent webComponent = beanName.length() > 0 ? form.getComponent(beanName) : (WebComponent)form;
+			Iterator<String> keys = changes.keys();
+			while (keys.hasNext())
+			{
+				String key = keys.next();
+				Object object = changes.get(key);
+				webComponent.putBrowserProperty(key, object);
+			}
 		}
 	}
 

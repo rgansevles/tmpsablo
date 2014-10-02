@@ -3,6 +3,7 @@ package org.sablo.example;
 import javax.servlet.annotation.WebFilter;
 
 import org.sablo.WebEntry;
+import org.sablo.example.endpoint.HelloWorldEndpoint;
 import org.sablo.example.endpoint.HelloWorldWebsocketSession;
 import org.sablo.websocket.IWebsocketSession;
 import org.sablo.websocket.IWebsocketSessionFactory;
@@ -12,7 +13,7 @@ public class HelloWorld extends WebEntry
 {
 	public HelloWorld()
 	{
-		super("helloworld");
+		super(HelloWorldEndpoint.HELLO_WORLD_ENDPOINT);
 	}
 
 	public static final String PATH = "examples/"; // derived from WebFilter annotation pattern

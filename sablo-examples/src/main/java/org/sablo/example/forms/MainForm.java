@@ -37,26 +37,30 @@ public class MainForm extends Container
 	{
 		super(name, spec);
 
-		WebComponent theLabel = new WebComponent("mylabel", "thelabel");
+		final WebComponent theLabel = new WebComponent("mylabel", "thelabel");
 		theLabel.setProperty("text", "initial server value");
 		add(theLabel);
+
+		final WebComponent theTextField = new WebComponent("mytextfield", "thetextfield");
+		theTextField.setProperty("value", "changeme");
+		add(theTextField);
 
 		WebComponent theButton = new WebComponent("mybutton", "thebutton");
 		theButton.addHandler("pushed", new IEventHandler()
 		{
-
 			@Override
 			public Object executeEvent(Object[] args)
 			{
 				System.err.println("I was pushed!");
+				// copy value from text field to label, will be automatically synchronised to browser
+				Object textvalue = theTextField.getProperty("value");
+				theLabel.setProperty("text", textvalue);
+
 				return 42;
 			}
 		});
 		add(theButton);
 
-		WebComponent theTextField = new WebComponent("mytextfield", "thetextfield");
-		theTextField.setProperty("value", "changeme");
-		add(theTextField);
 	}
 
 }

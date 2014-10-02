@@ -1,6 +1,7 @@
-angular.module('sampleApp').controller("mainForm", function($scope, $timeout, $window, $sabloApplication) {
+angular.module('sampleApp').controller("mainForm", function($scope, $window, $sabloApplication) {
 
-	$scope.model = {
+	
+    var beans = {
 			thelabel: 	 { text : 'Initial value' },
 			thebutton: 	 { text: 'push me'  },
 			thetextfield: 	 { value : 'should be replaced with server data' }
@@ -13,10 +14,31 @@ angular.module('sampleApp').controller("mainForm", function($scope, $timeout, $w
 	}
 	
 	$scope.handlers = {
-			'thebutton': {callEvent:getExecutor('thebutton')}
+			thebutton: {callEvent:getExecutor('thebutton')}
 	};
 	
 	$window.alert('RAGTEST mainForm');
+
+	var formProperties = { };
+
+	var formState = $sabloApplication.initFormState('mainForm', beans, formProperties);
+	$scope.model = formState.model;
+	$scope.api = formState.api;
+	$scope.layout = formState.layout;
+	$scope.formStyle = formState.style;
+	$scope.formProperties = formState.properties;
+	$scope.formname = 'mainForm';
 	
-	$sabloApplication.requestFormData('mainForm', $scope.model);
+	var wrapper = function(beanName) {
+		return function(newvalue,oldvalue) {
+			if(oldvalue !== newvalue) $sabloApplication.sendChanges(newvalue,oldvalue, "mainForm", beanName);
+		};
+	};
+	
+	$sabloApplication.requestFormData('mainForm', $scope.model).then(
+			   function() {
+				   $window.alert('RAGTEST requestFormData resolved');
+				   // initial data is loaded, install watches
+				   $scope.$watch("model.thetextfield", wrapper('thetextfield'), true);
+			   });
 });

@@ -45,6 +45,9 @@ public class MainForm extends Container
 		theTextField.setProperty("value", "changeme");
 		add(theTextField);
 
+		final WebComponent theCounter = new WebComponent("mycounter", "thecounter");
+		add(theCounter);
+
 		WebComponent theButton = new WebComponent("mybutton", "thebutton");
 		theButton.addHandler("pushed", new IEventHandler()
 		{
@@ -55,6 +58,8 @@ public class MainForm extends Container
 				// copy value from text field to label, will be automatically synchronised to browser
 				Object textvalue = theTextField.getProperty("value");
 				theLabel.setProperty("text", textvalue);
+				// call a function on an element
+				theCounter.invokeApi("increment", new Object[] { 2 });
 
 				return 42;
 			}

@@ -5,7 +5,8 @@ angular.module('sampleApp').controller("mainForm", function($scope, $window, $sa
     var beans = {
 			thelabel: 	 { text : 'Initial value' },
 			thebutton: 	 { text: 'push me'  },
-			thetextfield: 	 { value : 'should be replaced with server data' }
+			thetextfield: 	 { value : 'should be replaced with server data' },
+			thecounter: 	 { n: 3 }
 	};
 	
 	// TODO: to sablo_app
@@ -66,6 +67,6 @@ angular.module('sampleApp').controller("mainForm", function($scope, $window, $sa
 			   function() {
 				   $window.alert('RAGTEST requestFormData resolved');
 				   // initial data is loaded, install watches
-				   $scope.$watch("model.thetextfield", wrapper('thetextfield'), true);
+				   formState.addWatches();
 			   });
 });

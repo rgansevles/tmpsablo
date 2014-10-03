@@ -68,6 +68,6 @@ public class HelloWorldEndpoint extends WebsocketEndpoint
 	@OnError
 	public void onError(Throwable t)
 	{
-		log.error("Exception happend", t);
+		log.error("IOException happened", t);
 	}
 }

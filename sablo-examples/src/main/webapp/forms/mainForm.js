@@ -1,5 +1,6 @@
 angular.module('sampleApp').controller("mainForm", function($scope, $window, $sabloApplication) {
 
+	var formName = 'mainForm';
 	
     var beans = {
 			thelabel: 	 { text : 'Initial value' },
@@ -7,35 +8,61 @@ angular.module('sampleApp').controller("mainForm", function($scope, $window, $sa
 			thetextfield: 	 { value : 'should be replaced with server data' }
 	};
 	
+	// TODO: to sablo_app
 	function getExecutor(name, event, args) {
 		return function(event, args) {
-			return $sabloApplication.getExecutor('mainForm').on(name, event, args);
+			return $sabloApplication.getExecutor(formName).on(name, event, args);
 		};
 	}
 	
+	// TODO: to sablo_app
 	$scope.handlers = {
 			thebutton: {callEvent:getExecutor('thebutton')}
 	};
 	
 	$window.alert('RAGTEST mainForm');
 
-	var formProperties = { };
-
-	var formState = $sabloApplication.initFormState('mainForm', beans, formProperties);
+	var formProperties = {"designSize":{"width":640,"height":480},"size":{"width":640,"height":480}};
+	
+	var formState = $sabloApplication.initFormState(formName, beans, formProperties);
+	// TODO: to sablo_app
 	$scope.model = formState.model;
 	$scope.api = formState.api;
 	$scope.layout = formState.layout;
 	$scope.formStyle = formState.style;
 	$scope.formProperties = formState.properties;
-	$scope.formname = 'mainForm';
 	
+	// TODO: to sablo_app (install watches)
 	var wrapper = function(beanName) {
 		return function(newvalue,oldvalue) {
-			if(oldvalue !== newvalue) $sabloApplication.sendChanges(newvalue,oldvalue, "mainForm", beanName);
+			if(oldvalue !== newvalue) $sabloApplication.sendChanges(newvalue,oldvalue, formName, beanName);
 		};
 	};
 	
-	$sabloApplication.requestFormData('mainForm', $scope.model).then(
+	
+	var watches = {};
+
+	// TODO: create automatically
+    formState.addWatches = function (beanNames) {
+            for (var beanName in (beanNames || beans)) {
+                    watches[beanName] = $scope.$watch("model." + beanName, wrapper(beanName), true);
+            }
+    };
+    
+    formState.removeWatches = function (beanNames) {
+            if (Object.getOwnPropertyNames(watches).length == 0) return false;
+            
+            for (var beanName in (beanNames || beans)) {
+                if (watches[beanName]) watches[beanName]();
+            }
+            
+            return true;
+    };
+    
+    formState.getScope = function() { return $scope; };
+
+    
+	$sabloApplication.requestFormData(formName, $scope.model).then(
 			   function() {
 				   $window.alert('RAGTEST requestFormData resolved');
 				   // initial data is loaded, install watches

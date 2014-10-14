@@ -49,7 +49,7 @@ public class MainForm extends Container
 		add(theCounter);
 
 		WebComponent theButton = new WebComponent("mybutton", "thebutton");
-		theButton.addHandler("pushed", new IEventHandler()
+		theButton.addEventHandler("pushed", new IEventHandler()
 		{
 			@Override
 			public Object executeEvent(Object[] args)

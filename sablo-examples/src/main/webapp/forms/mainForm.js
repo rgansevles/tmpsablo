@@ -40,7 +40,6 @@ angular.module('sampleApp').controller("mainForm", function($scope, $window, $sa
 		};
 	};
 	
-	
 	var watches = {};
 
 	// TODO: create automatically
@@ -62,11 +61,4 @@ angular.module('sampleApp').controller("mainForm", function($scope, $window, $sa
     
     formState.getScope = function() { return $scope; };
 
-    
-	$sabloApplication.requestFormData(formName, $scope.model).then(
-			   function() {
-				   $window.alert('RAGTEST requestFormData resolved');
-				   // initial data is loaded, install watches
-				   formState.addWatches();
-			   });
 });

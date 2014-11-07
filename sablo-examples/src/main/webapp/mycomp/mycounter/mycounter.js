@@ -1,4 +1,4 @@
-angular.module('mycounter',['sablo']).directive('mycounter', function() {  
+angular.module('mycounter',[]).directive('mycounter', function() {  
 	return {
 		restrict: 'E',
 		transclude: true,

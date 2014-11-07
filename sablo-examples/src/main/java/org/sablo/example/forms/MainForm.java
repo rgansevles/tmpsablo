@@ -46,6 +46,7 @@ public class MainForm extends Container
 		add(theTextField);
 
 		final WebComponent theCounter = new WebComponent("mycounter", "thecounter");
+		theCounter.setProperty("n", Integer.valueOf(99));
 		add(theCounter);
 
 		WebComponent theButton = new WebComponent("mybutton", "thebutton");

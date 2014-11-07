@@ -31,6 +31,7 @@ import org.sablo.example.forms.MainForm;
 import org.sablo.specification.WebComponentSpecification;
 import org.sablo.websocket.BaseWebsocketSession;
 import org.sablo.websocket.WebsocketEndpoint;
+import org.sablo.websocket.utils.JSONUtils.FullValueToJSONConverter;
 
 /**
  *
@@ -47,7 +48,6 @@ public class HelloWorldWebsocketSession extends BaseWebsocketSession
 		private FormSpecification()
 		{
 			super("form_spec", "", "", null, null, "", null);
-			//putProperty("size", new PropertyDescription("size", TypesRegistry.getType("dimension")));
 		}
 	}
 
@@ -77,7 +77,7 @@ public class HelloWorldWebsocketSession extends BaseWebsocketSession
 			String event = obj.getString("cmd");
 			switch (event)
 			{
-				case "datapush" :
+				case "ragtestdatapush" :
 				{
 					getEventDispatcher().addEvent(new Runnable()
 					{
@@ -128,7 +128,9 @@ public class HelloWorldWebsocketSession extends BaseWebsocketSession
 								}
 								if (obj.has("cmsgid")) // client wants response
 								{
-									WebsocketEndpoint.get().sendResponse(obj.get("cmsgid"), error == null ? result : error, null, error == null);
+									// TODO: removed
+									WebsocketEndpoint.get().sendResponse(obj.get("cmsgid"), error == null ? result : error, null,
+										FullValueToJSONConverter.INSTANCE, error == null);
 								}
 							}
 							catch (JSONException | IOException e)

@@ -4,17 +4,13 @@
 	"definition": "mycomp/mycounter/mycounter.js",
 	"model":
 	{
+		 "n" : "int"
 	},
 	"api":
 	{
-	        "increment": {
-	            "returns": "int",
-	            "parameters":[
-								{                                                                 
- 								"name":"inc",
-								"type":"int"
-			            		}             
-							 ]
-	        }
+        "increment": {
+            "parameters":[ {  "name":"inc", "type":"int" }  ],
+            "returns": "int"
+        }
 	}
 }

@@ -3,9 +3,9 @@ angular.module('sampleApp', ['sabloApp', 'mylabel', 'mybutton', 'mytextfield', '
 	$scope.windowTitle = 'Sample Aplication';
 	$scope.currentPanel = 'forms/mainForm.html';
 	
-	$window.alert('Connecting...');
+	// $window.alert('Connecting...');
 	$sabloApplication.connect('', ['thesessionid']);
 })
 .run(function($window) {
-	$window.alert('Sample Startup');
+	// $window.alert('Sample Startup');
 });

@@ -6,12 +6,6 @@
 	{
 		 "text" : "string"
 	},
-	"__handlers":
-	{
-		"onActionMethodID" : "function"
-	},
-	"api":
-	{
-		 "doAlert": {"parameters":[ { "name":"message", "type":"string"}] }
-	}
+	"handlers": { },
+	"api": { }
 }

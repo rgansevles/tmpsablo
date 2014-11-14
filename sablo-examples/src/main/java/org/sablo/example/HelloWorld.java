@@ -30,7 +30,7 @@ import org.sablo.websocket.IWebsocketSessionFactory;
  * @author rgansevles
  */
 
-@WebFilter(urlPatterns = { "/sablo-examples/helloworld/*" })
+@WebFilter(urlPatterns = { "/*" })
 public class HelloWorld extends WebEntry
 {
 	public HelloWorld()
@@ -42,6 +42,12 @@ public class HelloWorld extends WebEntry
 	public String[] getWebComponentBundleNames()
 	{
 		return new String[] { "/mycomp" };
+	}
+	
+	@Override
+	public String[] getServiceBundleNames()
+	{
+		return new String[] {  };
 	}
 
 	@Override

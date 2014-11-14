@@ -1,2 +1,5 @@
 target/
-/tst
+.classpath
+.project
+.settings/
+

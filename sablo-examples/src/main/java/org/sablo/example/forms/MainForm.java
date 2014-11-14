@@ -29,27 +29,35 @@ import org.sablo.specification.WebComponentSpecification;
 public class MainForm extends Container
 {
 
-	/**
-	 * @param name
-	 * @param spec
-	 */
-	public MainForm(String name, WebComponentSpecification spec)
+	private static final class FormSpecification extends WebComponentSpecification
 	{
-		super(name, spec);
+		private FormSpecification()
+		{
+			super("form_spec", "", "", null, null, "", null);
+		}
+	}
 
-		final WebComponent theLabel = new WebComponent("mylabel", "thelabel");
+	private static final WebComponentSpecification FORM_SPEC = new FormSpecification();
+
+	private final WebComponent theLabel;
+	private final WebComponent theTextField;
+	private final WebComponent theCounter;
+	private final WebComponent theButton;
+
+	public MainForm(String name)
+	{
+		super(name, FORM_SPEC);
+
+		add(theLabel = new WebComponent("mylabel", "thelabel"));
 		theLabel.setProperty("text", "initial server value");
-		add(theLabel);
 
-		final WebComponent theTextField = new WebComponent("mytextfield", "thetextfield");
+		add(theTextField = new WebComponent("mytextfield", "thetextfield"));
 		theTextField.setProperty("value", "changeme");
-		add(theTextField);
 
-		final WebComponent theCounter = new WebComponent("mycounter", "thecounter");
+		add(theCounter = new WebComponent("mycounter", "thecounter"));
 		theCounter.setProperty("n", Integer.valueOf(99));
-		add(theCounter);
 
-		WebComponent theButton = new WebComponent("mybutton", "thebutton");
+		add(theButton = new WebComponent("mybutton", "thebutton"));
 		theButton.addEventHandler("pushed", new IEventHandler()
 		{
 			@Override
@@ -62,11 +70,9 @@ public class MainForm extends Container
 				// call a function on an element
 				theCounter.invokeApi("increment", new Object[] { 2 });
 
-				return 42;
+				return null;
 			}
 		});
-		add(theButton);
-
 	}
 
 }

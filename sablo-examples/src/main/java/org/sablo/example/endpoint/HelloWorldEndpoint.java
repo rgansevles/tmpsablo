@@ -28,7 +28,8 @@ import javax.websocket.server.ServerEndpoint;
 import org.sablo.websocket.WebsocketEndpoint;
 
 /**
- * RAGTEST doc
+ * Websocket endpoint for sample sablo application.
+ * 
  * @author rgansevles
  *
  */

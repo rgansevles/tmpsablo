@@ -1,5 +1,7 @@
 angular.module('sampleApp').controller("mainForm", function($scope, $window, $sabloApplication) {
 
+//	$window.alert(' starting mainForm');
+
 	var formName = 'mainForm';
 	
     var beans = {
@@ -21,7 +23,6 @@ angular.module('sampleApp').controller("mainForm", function($scope, $window, $sa
 			thebutton: {callEvent:getExecutor('thebutton')}
 	};
 	
-	$window.alert('RAGTEST mainForm');
 
 	var formProperties = {"designSize":{"width":640,"height":480},"size":{"width":640,"height":480}};
 	

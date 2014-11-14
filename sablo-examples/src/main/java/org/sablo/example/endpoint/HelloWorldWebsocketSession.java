@@ -24,7 +24,10 @@ import org.sablo.example.forms.MainForm;
 import org.sablo.websocket.BaseWebsocketSession;
 
 /**
- *
+ * Web socket session for a sablo application.
+ * 
+ * Keeps component state for the active application.
+ * 
  * @author rgansevles
  *
  */

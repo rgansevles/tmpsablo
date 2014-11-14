@@ -22,21 +22,15 @@ import org.sablo.WebComponent;
 import org.sablo.specification.WebComponentSpecification;
 
 /**
+ * Main Form in sample sablo application.
+ * 
  * @author rgansevles
  *
  */
 public class MainForm extends Container
 {
 
-	private static final class FormSpecification extends WebComponentSpecification
-	{
-		private FormSpecification()
-		{
-			super("form_spec", "", "", null, null, "", null);
-		}
-	}
-
-	private static final WebComponentSpecification FORM_SPEC = new FormSpecification();
+	private static final WebComponentSpecification FORM_SPEC = new WebComponentSpecification("form_spec", "", "", null, null, "", null);
 
 	private final WebComponent theLabel;
 	private final WebComponent theTextField;

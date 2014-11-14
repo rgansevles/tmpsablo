@@ -24,6 +24,12 @@ import org.sablo.example.endpoint.HelloWorldWebsocketSession;
 import org.sablo.websocket.IWebsocketSession;
 import org.sablo.websocket.IWebsocketSessionFactory;
 
+/**
+ * Configuration class to define entry points and factories for sample sablo application.
+ * 
+ * @author rgansevles
+ */
+
 @WebFilter(urlPatterns = { "/sablo-examples/helloworld/*" })
 public class HelloWorld extends WebEntry
 {
